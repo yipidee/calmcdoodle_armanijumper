@@ -1,0 +1,103 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://DiaryOfAn8BitMage-lYDD.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Intro.gd" type="Script" id=2]
+[ext_resource path="res://OnscreenControls.tscn" type="PackedScene" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 43
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 23
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 18
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Flash"
+length = 1.6
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("CenterContainer/VBoxContainer/PressSpace:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0, 1.0 ]
+}
+
+[node name="Intro" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.266667, 0.537255, 0.262745, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 81.0
+margin_top = 194.0
+margin_right = 586.0
+margin_bottom = 405.0
+custom_constants/separation = 25
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 505.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 1 )
+text = "Cal McDoodle"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Subtitle" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 69.0
+margin_right = 505.0
+margin_bottom = 93.0
+custom_fonts/font = SubResource( 2 )
+text = "And the search for the Armani Jumper"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+margin_top = 118.0
+margin_right = 505.0
+margin_bottom = 168.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="PressSpace" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 193.0
+margin_right = 505.0
+margin_bottom = 211.0
+custom_fonts/font = SubResource( 3 )
+text = "Press Space to Start"
+align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Flash"
+anims/Flash = SubResource( 4 )
+
+[node name="OnscreenControls" parent="." instance=ExtResource( 3 )]

@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://circle.png" type="Texture" id=1]
+[ext_resource path="res://Arrow-Free-PNG.png" type="Texture" id=2]
+[ext_resource path="res://DiaryOfAn8BitMage-lYDD.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 13
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[node name="OnscreenControls" type="CanvasLayer"]
+
+[node name="UpButton" type="TouchScreenButton" parent="."]
+position = Vector2( 41.0122, 545.887 )
+rotation = -1.5708
+scale = Vector2( 2, 2 )
+normal = ExtResource( 2 )
+passby_press = true
+action = "ui_up"
+
+[node name="DownButton" type="TouchScreenButton" parent="."]
+position = Vector2( 62.2254, 555.786 )
+rotation = 1.5708
+scale = Vector2( 2, 2 )
+normal = ExtResource( 2 )
+passby_press = true
+action = "ui_down"
+
+[node name="LeftButton" type="TouchScreenButton" parent="."]
+position = Vector2( 38.1838, 561.443 )
+rotation = 3.14159
+scale = Vector2( 2, 2 )
+normal = ExtResource( 2 )
+passby_press = true
+action = "ui_left"
+
+[node name="RightButton" type="TouchScreenButton" parent="."]
+position = Vector2( 65.0538, 540.23 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 2 )
+passby_press = true
+action = "ui_right"
+
+[node name="ActionButton" type="TouchScreenButton" parent="."]
+position = Vector2( 599.627, 531.744 )
+scale = Vector2( 3, 3 )
+normal = ExtResource( 1 )
+action = "ui_accept"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 603.869
+margin_top = 548.008
+margin_right = 643.869
+margin_bottom = 562.008
+custom_fonts/font = SubResource( 1 )
+text = "space"
+__meta__ = {
+"_edit_use_anchors_": false
+}

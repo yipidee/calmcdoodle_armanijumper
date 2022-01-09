@@ -1,0 +1,152 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://DiaryOfAn8BitMage-lYDD.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://characters.png" type="Texture" id=2]
+[ext_resource path="res://Auld-Lang-Syne-_8-Bit-NES-Remix_.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Epilogue.gd" type="Script" id=4]
+[ext_resource path="res://OnscreenControls.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=5]
+size = 31
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 22
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Cal_Walk"
+length = 1.2
+loop = true
+step = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 50, 51 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 46, 47 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 6 ]
+}
+
+[node name="Epilogue" type="CanvasLayer"]
+script = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.266667, 0.537255, 0.262745, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 135.0
+margin_right = -20.0
+margin_bottom = -20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 627.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 5 )
+text = "Epilogue"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+margin_top = 36.0
+margin_right = 627.0
+margin_bottom = 201.0
+rect_min_size = Vector2( 0, 165 )
+
+[node name="Sprite" type="Sprite" parent="VBoxContainer"]
+position = Vector2( 108, 249 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+vframes = 9
+hframes = 9
+frame = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 205.0
+margin_right = 627.0
+margin_bottom = 405.0
+
+[node name="Container" type="Container" parent="VBoxContainer/HBoxContainer"]
+margin_right = 200.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 204.0
+margin_right = 554.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 350, 200 )
+custom_fonts/font = SubResource( 6 )
+text = "Text about the player"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+margin_top = 409.0
+margin_right = 627.0
+margin_bottom = 426.0
+custom_fonts/font = SubResource( 7 )
+text = "Press space to proceed"
+align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Cal_Walk = SubResource( 4 )
+anims/Mitch_Walk = SubResource( 8 )
+anims/Stef_Walk = SubResource( 9 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="OnscreenControls" parent="." instance=ExtResource( 5 )]
